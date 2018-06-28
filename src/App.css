@@ -1,11 +1,32 @@
+ @import url('https://fonts.googleapis.com/css?family=Codystar:300,400|Libre+Barcode+39+Extended+Text');
+ 
+ html {
+    font-size: 16px;
+}
+
+body {
+    font-family: futura;
+    line-height: 0.2rem;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+*{
+  outline: none;
+}
+
 .App {
   text-align: center;
 }
-
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+}*/
 
 .App-header {
   background-color: #222;
@@ -25,4 +46,14 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.videoPlayer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: -10;
+
 }
