@@ -39,3 +39,7 @@ export const StyledH1 = styled('h1')(
         fontWeight: 400,
         color: 'black'
 }))
+
+export const PaddedDiv = styled('div')`
+  padding-bottom: 100px;
+`

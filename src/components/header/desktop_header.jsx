@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import { MuiThemeProvider, createMuiTheme/*, withStyles*/ } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import { StyledList, StyledHeader, StyledH1 } from './styled_header.js'
+import { StyledList, StyledHeader, StyledH1, PaddedDiv } from './styled_header.js'
 import { PlaylistItem } from '../playlistitem'
 import { DEVICES, availablePlaylists, initialVideo } from '../../constants'
 import { Fetch } from '../../stores/fetch'
@@ -23,10 +23,12 @@ const theme = createMuiTheme({
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
+                paddingBottom: 50
             },
         },
     },
 });
+
 
 
 export class DesktopHeaderComponent extends React.Component {
@@ -50,7 +52,7 @@ export class DesktopHeaderComponent extends React.Component {
         }
     }
 
-    selectVideoHandler(videoId){
+    selectVideoHandler(videoId) {
         setVideoId(videoId)
         setPlayOnLoad(true)
         this.props.history.push('/')
@@ -66,8 +68,8 @@ export class DesktopHeaderComponent extends React.Component {
         this.selectPlaylist(category, () => this.toggleDrawer(true))
     }
 
-    goToHomePage() { 
-        setVideoId(initialVideo)  
+    goToHomePage() {
+        setVideoId(initialVideo)
         this.props.history.push('/')
         setPlayOnLoad(false)
     }
@@ -79,7 +81,7 @@ export class DesktopHeaderComponent extends React.Component {
         const selectVideoHandler = this.selectVideoHandler.bind(this)
         // const playlistClickHandler = this.playlistClickHandler.bind(this)
         const toggleDrawer = this.toggleDrawer.bind(this)
-        
+
         const sideList = (
             <StyledList viewportWidth={viewportWidth}>
                 <a href="#" onClick={() => this.playlistClickHandler('film')}>FILM</a>
@@ -93,22 +95,23 @@ export class DesktopHeaderComponent extends React.Component {
 
         return (
             <StyledHeader >
-                <StyledH1 onClick={()=> this.goToHomePage()}>
+                <StyledH1 onClick={() => this.goToHomePage()}>
                     {/*<img src={logo} className="header-logo" alt="logo" />*/}
                     IEVA MAKSELYTE
         </StyledH1>
                 <MuiThemeProvider theme={theme}>
-                    <Drawer open={this.state.open} onClose={() => toggleDrawer(false)} 
+                    <Drawer open={this.state.open} onClose={() => toggleDrawer(false)}
                         anchor="right"
                         role="button"
-                            onClick={() => toggleDrawer(false)}
-                            onKeyDown={() => toggleDrawer(false)}
-                        >
+                        onClick={() => toggleDrawer(false)}
+                        onKeyDown={() => toggleDrawer(false)}
+                    ><PaddedDiv>
                             {playlistsItems && playlistsItems.length ?
                                 playlistsItems.map((playlistItem, index) => <PlaylistItem key={`playlistItem_${index}`} playlistItem={playlistItem} selectVideoHandler={selectVideoHandler} />)
                                 :
                                 null
                             }
+                        </PaddedDiv>
                     </Drawer>
                 </MuiThemeProvider>
                 {sideList}
