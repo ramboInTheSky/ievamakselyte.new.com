@@ -14,7 +14,7 @@ const theme = createMuiTheme({
         // Name of the component ⚛️ / style sheet
         MuiDrawer: {
             // Name of the rule
-            paperAnchorLeft: {
+            paperAnchorRight: {
                 // Some CSS
                 top: 51,
                 width: 420,
@@ -98,10 +98,9 @@ export class DesktopHeaderComponent extends React.Component {
                     IEVA MAKSELYTE
         </StyledH1>
                 <MuiThemeProvider theme={theme}>
-                    <Drawer open={this.state.open} onClose={() => toggleDrawer(false)} >
-                        <div
-                            className="lallero"
-                            tabIndex={0}
+                    <Drawer open={this.state.open} onClose={() => toggleDrawer(false)} 
+                        anchor="right"
+                        role="button"
                             onClick={() => toggleDrawer(false)}
                             onKeyDown={() => toggleDrawer(false)}
                         >
@@ -110,7 +109,6 @@ export class DesktopHeaderComponent extends React.Component {
                                 :
                                 null
                             }
-                        </div>
                     </Drawer>
                 </MuiThemeProvider>
                 {sideList}
