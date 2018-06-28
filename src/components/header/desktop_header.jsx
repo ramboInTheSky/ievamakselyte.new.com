@@ -68,8 +68,8 @@ export class DesktopHeaderComponent extends React.Component {
 
     goToHomePage() { 
         setVideoId(initialVideo)  
-        setPlayOnLoad(false)
         this.props.history.push('/')
+        setPlayOnLoad(false)
     }
 
     render() {

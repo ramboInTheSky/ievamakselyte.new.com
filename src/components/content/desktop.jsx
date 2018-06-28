@@ -12,48 +12,54 @@ const videoContainerClass = css`
     height: 100%;
     z-index: -10;
 `
+
+const opts = {
+    // height: '100%',
+    width: '100%',
+    playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1,
+        controls: 1,
+        rel: 0,
+        showinfo: 0,
+        loop: 1,
+        modestbranding: 1
+    }
+};
+
 export const DesktopContent = observer(
-    () => {
+    class DesktopContentClass extends React.Component {
 
-        const opts = {
-            // height: '100%',
-            width: '100%',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 1,
-                controls: 1,
-                rel: 0,
-                showinfo: 0,
-                loop: 1,
-                modestbranding: 1
-            }
-        };
+        componentWillReact() { 
+            console.log('playOnLoad is: ', LocalStore.playOnLoad)
+            // opts.playerVars.autoplay = LocalStore.playOnLoad? 1 : 0
+        }
 
-        const onVideoReady = (event) => {
+        onVideoReady(event) {
             // access to player in all event handlers via event.target
             const videoApiControls = event.target
             //allow for the video to render first
             if (!LocalStore.playOnLoad)
                 setTimeout(() => videoApiControls.pauseVideo(), 500)
         }
-        const onVideoPaused = (event) => {
 
+        onVideoPaused(event) { }
+        onVideoPlayed(event) { }
+
+        render() {
+            const { playOnLoad } = LocalStore
+            return (
+                <div >
+                    <YouTube
+                        videoId={LocalStore.videoId}
+                        opts={opts}
+                        onReady={this.onVideoReady}
+                        className={videoContainerClass}
+                        onPlay={this.onVideoPlayed}
+                        onPause={this.onVideoPaused}
+                    />
+                    {/*{availabilityBanner}*/}
+                </div>
+            )
         }
-        const onVideoPlayed = (event) => {
-
-        }
-
-        return (
-            <div >
-                <YouTube
-                    videoId={LocalStore.videoId}
-                    opts={opts}
-                    onReady={onVideoReady}
-                    className={videoContainerClass}
-                    onPlay={onVideoPlayed}
-                    onPause={onVideoPaused}
-                />
-                {/*{availabilityBanner}*/}
-            </div>
-        )
     }
 )

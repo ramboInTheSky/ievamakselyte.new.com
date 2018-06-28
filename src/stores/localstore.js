@@ -1,4 +1,5 @@
 import {
+    decorate,
     observable,
     action
 } from 'mobx'
@@ -6,7 +7,7 @@ import {
     initialVideo
 } from '../constants'
 
-export const LocalStore = observable({
+export const LocalStore = observable.object({
     //initial state
     videoId: initialVideo,
     playOnLoad: false,
