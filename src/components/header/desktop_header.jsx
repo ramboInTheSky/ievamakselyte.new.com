@@ -87,7 +87,7 @@ export class DesktopHeaderComponent extends React.Component {
                 <a href="#" onClick={() => this.playlistClickHandler('digital')}>DIGITAL</a>
                 <a href="#" onClick={() => this.playlistClickHandler('music')}>MUSIC</a>
                 <NavLink to="/bio">BIO</NavLink>
-                <NavLink to="/bio">CONTACT</NavLink>
+                <NavLink to="/contacts">CONTACT</NavLink>
             </StyledList >
         );
 

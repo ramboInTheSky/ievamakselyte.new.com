@@ -3,7 +3,7 @@ import React, {
     Fragment
 } from 'react';
 import Measure from 'react-measure';
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 
 import { DesktopHeader, MobileHeader } from '../header'
 import { DEVICES } from '../../constants'
