@@ -80,14 +80,12 @@ export class DesktopHeaderComponent extends React.Component {
         const { playlistsItems } = this.state
         const selectVideoHandler = this.selectVideoHandler.bind(this)
         // const playlistClickHandler = this.playlistClickHandler.bind(this)
-        const toggleDrawer = this.toggleDrawer.bind(this)
 
         const sideList = (
             <StyledList viewportWidth={viewportWidth}>
                 <a href="#" onClick={() => this.playlistClickHandler('film')}>FILM</a>
                 <a href="#" onClick={() => this.playlistClickHandler('digital')}>DIGITAL</a>
                 <a href="#" onClick={() => this.playlistClickHandler('music')}>MUSIC</a>
-                <NavLink to="/bio"> FILMOGRAPHY </NavLink>
                 <NavLink to="/bio">BIO</NavLink>
                 <NavLink to="/bio">CONTACT</NavLink>
             </StyledList >
@@ -100,11 +98,11 @@ export class DesktopHeaderComponent extends React.Component {
                     IEVA MAKSELYTE
         </StyledH1>
                 <MuiThemeProvider theme={theme}>
-                    <Drawer open={this.state.open} onClose={() => toggleDrawer(false)}
+                    <Drawer open={this.state.open} onClose={() => this.toggleDrawer(false)}
                         anchor="right"
                         role="button"
-                        onClick={() => toggleDrawer(false)}
-                        onKeyDown={() => toggleDrawer(false)}
+                        onClick={() => this.toggleDrawer(false)}
+                        onKeyDown={() => this.toggleDrawer(false)}
                     ><PaddedDiv>
                             {playlistsItems && playlistsItems.length ?
                                 playlistsItems.map((playlistItem, index) => <PlaylistItem key={`playlistItem_${index}`} playlistItem={playlistItem} selectVideoHandler={selectVideoHandler} />)

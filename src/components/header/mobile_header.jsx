@@ -112,7 +112,6 @@ class HeaderComponent extends React.Component {
           :
           <a href="#" onClick={() => setPage(0)} className={`${page == 1 ? 'selected' : ''}`}>VIDEOS</a>
         }
-        <a href="#" onClick={() => setPage(1)} className={`${page == 1 ? 'selected' : ''}`}>FILMOGRAPHY</a>
         <a href="#" onClick={() => setPage(1)} className={`${page == 1 ? 'selected' : ''}`}>BIO</a>
         <a href="#" onClick={() => setPage(1)} className={`${page == 1 ? 'selected' : ''}`}>CONTACT</a>
 
