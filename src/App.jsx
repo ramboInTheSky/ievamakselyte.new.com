@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Home } from './pages/home';
-import { Bio } from './pages/bio';
-import { Contacts } from './pages/contacts';
-import './App.css';
+import React, { Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Home } from './pages/home'
+import { Bio } from './pages/bio'
+import { Contacts } from './pages/contacts'
+import './App.css'
 
 export const App = (props) => {
   return (
@@ -15,8 +15,7 @@ export const App = (props) => {
         {/*<Route exact path="/r/entities/:orgId" component={(props) => <Entities {...props} />} />*/}
       </Fragment>
     </Router>
-  );
+  )
 }
 
-
-export default App;
+export default App
