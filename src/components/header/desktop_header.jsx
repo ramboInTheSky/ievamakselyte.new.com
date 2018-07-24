@@ -23,7 +23,9 @@ const theme = createMuiTheme({
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                paddingBottom: 50
+                paddingBottom: 50,
+                backgroundColor: '#ffffff00',
+                color: '#e0d8d8',
             },
         },
     },

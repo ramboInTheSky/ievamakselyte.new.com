@@ -60,7 +60,7 @@ const BioContainer = styled('div')(
                 borderRadius: '5px',
                 padding: '10px',
                 width: '90%',
-                margin: '5px 10px'
+                margin: '5px auto'
             },
         }
     ))

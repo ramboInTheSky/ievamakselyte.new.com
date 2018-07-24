@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 import { withRouter } from 'react-router'
 
 import { Fetch } from '../../stores/fetch'
@@ -21,7 +21,7 @@ const theme = createMuiTheme({
       // Name of the rule
       paperAnchorLeft: {
         // Some CSS
-        top: 48
+        top: 48,
       },
     },
   },
@@ -50,6 +50,20 @@ const StyledDrawerList = styled('div')(({ viewportWidth }) => {
     }
   }
 })
+
+const playlistItemClass = css`
+  margin-left: .95rem;
+  & h5{
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin-bottom: 10px;
+  }
+`
+
+const VideoCategoryTitle = styled('span')`
+  text-align: center;
+  margin-top: 1rem;
+`
 
 const styles = {
   button: {
@@ -136,16 +150,20 @@ class HeaderComponent extends React.Component {
           <NavLink to="/bio">BIO</NavLink>
           <NavLink to="/contacts">CONTACT</NavLink>
         </Fragment>
-        <Divider />
         {this.playlistsNames.map(element => {
           return (
-            <PaddedDiv key={element}>
+            <Fragment>
+              <Divider />
+            <VideoCategoryTitle>{element.toUpperCase()}</VideoCategoryTitle>  
+              <PaddedDiv viewportWidth={viewportWidth} key={element}>
               {playlistsItems && playlistsItems[element] && playlistsItems[element].length ?
-                playlistsItems[element].map((playlistItem, index) => <PlaylistItem key={`playlistItem_${index}`} playlistItem={playlistItem} selectVideoHandler={selectVideoHandler} />)
+                playlistsItems[element].map((playlistItem, index) =>
+                  <PlaylistItem key={`playlistItem_${index}`} className={playlistItemClass} viewportWidth={viewportWidth} playlistItem={playlistItem} selectVideoHandler={selectVideoHandler} />)
                 :
                 null
               }
-            </PaddedDiv>
+              </PaddedDiv>
+            </Fragment>  
           )
         }
         )}

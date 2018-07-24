@@ -1,6 +1,8 @@
 import styled from 'react-emotion'
+import { DEVICES } from '../../constants'
 
-export const StyledHeader = styled('header') `
+export const StyledHeader = styled('header')
+`
     background-color: #fff;
     height: 40px;
     display: flex;
@@ -16,7 +18,9 @@ export const StyledHeader = styled('header') `
     border-bottom: 3px solid white;
 `
 export const StyledList = styled('div')(
-    ({ viewportWidth }) => {
+    ({
+        viewportWidth
+    }) => {
         return {
             width: 'auto',
             lineHeight: '2.5rem',
@@ -29,17 +33,20 @@ export const StyledList = styled('div')(
                 color: '#000',
                 paddingLeft: 10,
                 fontSize: '1.2rem',
+            }
         }
-    }
-})
+    })
 
 export const StyledH1 = styled('h1')(
     props => ({
         fontSize: '1.8rem',
         fontWeight: 400,
         color: 'black'
-}))
+    }))
 
-export const PaddedDiv = styled('div')`
-  padding-bottom: 100px;
-`
+export const PaddedDiv = styled('div')(
+    ({ viewportWidth }) => {
+        return {
+            paddingBottom: viewportWidth < DEVICES.tablet ? '50px' : '100px'
+        }
+    })
