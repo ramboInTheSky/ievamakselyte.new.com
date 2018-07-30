@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import { MuiThemeProvider, createMuiTheme/*, withStyles*/ } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { StyledList, StyledHeader, StyledH1, PaddedDiv } from './styled_header.js'
 import { PlaylistItem } from '../playlistitem'
-import { DEVICES, availablePlaylists, initialVideo } from '../../constants'
+import { availablePlaylists, initialVideo } from '../../constants'
 import { Fetch } from '../../stores/fetch'
 import { setVideoId, setPlayOnLoad } from '../../stores/localstore'
 
@@ -49,8 +49,7 @@ export class DesktopHeaderComponent extends React.Component {
             this.setState({ playlistsItems: data.items }, () => callback())
         }
         catch (e) {
-            console.log(e)
-            alert('It looks like you have no connection to the internet')
+            console.log('It looks like you have no connection to the internet', e)
         }
     }
 
@@ -85,9 +84,9 @@ export class DesktopHeaderComponent extends React.Component {
 
         const sideList = (
             <StyledList viewportWidth={viewportWidth}>
-                <a href="#" onClick={() => this.playlistClickHandler('film')}>FILM</a>
-                <a href="#" onClick={() => this.playlistClickHandler('digital')}>DIGITAL</a>
-                <a href="#" onClick={() => this.playlistClickHandler('music')}>MUSIC</a>
+                <a onClick={() => this.playlistClickHandler('film')}>FILM</a>
+                <a onClick={() => this.playlistClickHandler('digital')}>DIGITAL</a>
+                <a onClick={() => this.playlistClickHandler('music')}>MUSIC</a>
                 <NavLink to="/bio">BIO</NavLink>
                 <NavLink to="/contacts">CONTACT</NavLink>
             </StyledList >

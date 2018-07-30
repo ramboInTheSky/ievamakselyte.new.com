@@ -17,7 +17,7 @@ export class AppShell extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            viewportWidth: -1,
+            viewportWidth: window.innerWidth,
         }
     }
 

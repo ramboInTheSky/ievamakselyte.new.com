@@ -1,8 +1,7 @@
 import styled from 'react-emotion'
 import { DEVICES } from '../../constants'
 
-export const StyledHeader = styled('header')
-`
+export const StyledHeader = styled('header')`
     background-color: #fff;
     height: 40px;
     display: flex;

@@ -46,7 +46,7 @@ export const DesktopContent = observer(
         onVideoPlayed(event) { }
 
         render() {
-            const { playOnLoad } = LocalStore
+            // const { playOnLoad } = LocalStore
             return (
                 <div >
                     <YouTube

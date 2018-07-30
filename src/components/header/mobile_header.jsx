@@ -11,7 +11,9 @@ import { Fetch } from '../../stores/fetch'
 import { PlaylistItem } from '../playlistitem'
 import { StyledHeader, StyledH1, PaddedDiv } from './styled_header.js'
 import { setVideoId, setPlayOnLoad } from '../../stores/localstore'
-import { DEVICES, availablePlaylists, initialVideo } from '../../constants'
+import {
+  availablePlaylists
+} from '../../constants'
 
 
 const theme = createMuiTheme({
@@ -97,13 +99,12 @@ class HeaderComponent extends React.Component {
       this.playlistsNames.map(async element => {
         const playlistId = availablePlaylists[element]
         const data = await this.fetchPlaylist(playlistId)
-        playlistsItems[element] = data.items
+        playlistsItems[element] = data && data.items
       })
       this.setState({ playlistsItems })
     }
     catch (e) {
-      console.log(e)
-      alert('It looks like you have no connection to the internet')
+      console.log('It looks like you have no connection to the internet', e)
     }
   }
 
@@ -113,8 +114,7 @@ class HeaderComponent extends React.Component {
       data = await Fetch.playlistItems(playlistId)
     }
     catch (e) {
-      console.log(e)
-      alert('It looks like you have no connection to the internet')
+      console.log('It looks like you have no connection to the internet', e)
     }
     return data
   }
@@ -152,7 +152,7 @@ class HeaderComponent extends React.Component {
         </Fragment>
         {this.playlistsNames.map(element => {
           return (
-            <Fragment>
+            <Fragment key={element}>
               <Divider />
             <VideoCategoryTitle>{element.toUpperCase()}</VideoCategoryTitle>  
               <PaddedDiv viewportWidth={viewportWidth} key={element}>

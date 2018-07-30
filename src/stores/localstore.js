@@ -1,5 +1,4 @@
 import {
-    decorate,
     observable,
     action
 } from 'mobx'
